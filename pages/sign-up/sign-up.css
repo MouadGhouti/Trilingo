@@ -32,12 +32,16 @@ body {
     }
 
     & .acc-buttons a {
+        display: initial;
         text-decoration: none;
         color: #fff;
         background-color: #b71c1c;
         padding: 10px 20px;
         border-radius: 5px;
         margin-left: 10px;
+    }
+    & .user-greeting {
+        display:none;
     }
 
 }
