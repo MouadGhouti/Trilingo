@@ -1,0 +1,21 @@
+{
+  "name": "trilingo",
+  "version": "1.0.0",
+  "description": "This guide explains how to work together on this project using Git. Follow these steps to keep things simple and organized.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7",
+    "sequelize": "^6.37.5"
+  }
+}

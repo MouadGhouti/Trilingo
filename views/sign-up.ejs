@@ -4,17 +4,18 @@
 	<title>
 		Sign Up
 	</title>
-	<link rel="stylesheet" href="/assests/css/reset.css">
+	<link rel="stylesheet" href="../assets/css/reset.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" />
-	<link rel="stylesheet" href="sign-up.css">
-	<link rel="stylesheet" href="../../componentes/footer-header.css">
-	<script src="sign-up.js" defer></script>
-    <script src="../../componentes/header-footer.js"> </script>
+	<link rel="stylesheet" href="../assets/css/sign-up.css"><!-- Move your css to assets/css -->
+	<script src="../assets/js/sign-up.js" defer></script>
+	<link rel="stylesheet" href="../componentes/footer-header.css"><!-- Must import this for the head and footer styles -->
+
+
 </head>
 
 <body>
-	<div id="header"></div>
+	<%- include('../componentes/header.ejs') %><!-- For the header -->
 	<div class="container">
 		<div class="testimonials">
 			<h2>
@@ -143,7 +144,8 @@
 			</form>
 		</div>
 	</div>
-	<div id="footer"></div>
+	<%- include('../componentes/footer.ejs') %><!-- For the footer -->
+
 </body>
 
 </html>

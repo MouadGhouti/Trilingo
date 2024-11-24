@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz 1: Introduction about XD</title>
+    <link rel="stylesheet" href="quiz-page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let lastCheckedRadio = null;
+    
+            const radios = document.querySelectorAll('input[name="q1"]');
+    
+            radios.forEach(radio => {
+                radio.addEventListener('click', function () {
+                    if (this === lastCheckedRadio) {
+                        this.checked = false;
+                        lastCheckedRadio = null;
+                    } else {
+                        lastCheckedRadio = this;
+                    }
+                });
+            });
+        });
+    
+        function validateAndSubmit() {
+            
+            const formQ1 = document.querySelector('input[name="q1"]:checked');
+            const formQ2 = document.querySelectorAll('input[name="q2"]:checked');
+    
+            
+            const errorMessage = document.getElementById("error-message");
+            const successMessage = document.getElementById("submit-message");
+    
+            
+            if (!formQ1 || formQ2.length === 0) {
+                successMessage.style.display = "none";  
+                errorMessage.style.display = "block";
+                errorMessage.innerText = "Please answer all questions before submitting.";
+                return false;
+            }
+    
+            
+            errorMessage.style.display = "none";  
+            successMessage.style.display = "block";  
+            successMessage.innerText = "Your answers have been submitted!";
+            
+            return false;  // no Database / server YET
+        }
+    </script>
+    
+</head>
+
+<body>
+
+    <header>
+        <div class="header-content">
+            <a href="#" class="back-arrow">←</a>
+            <div class="quiz-header">
+                <span class="quiz-number">Quiz 1</span>
+                <br></br>
+                <span class="quiz-title">Introduction about XD</span>
+            </div>
+            <div class="timer">
+                <i class="far fa-clock"></i>
+                <span class="time-text">1 hour</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="introduction">
+        <p>
+            Long short-term memory (LSTM) is a type of recurrent neural network (RNN) aimed at dealing with the
+            vanishing gradient problem
+            present in traditional RNNs. Its relative insensitivity to gap length is its advantage over other RNNs,
+            hidden Markov models, and other sequence learning methods. It aims to provide a short-term memory for RNN
+            that can last thousands of timesteps, thus "long short-term memory."
+        </p>
+    </section>
+
+    <section class="questions">
+
+        <!-- Question 1 -->
+        <form id="quiz-form" onsubmit="return validateAndSubmit()">
+            <div class="question">
+                <div class="question-header">
+                    <p class="question-number">Question 1:</p>
+                    <div class="points">5 points</div>
+                </div>
+                <br>
+                <p class="question-content">Gap length is its advantage over other RNNs, hidden Markov models, and other
+                    sequence learning methods. It aims to provide a short-term memory for RNN that can last thousands of
+                    timesteps, thus "long short-term memory"?</p>
+                <br>
+                <div class="options">
+                    <label class="custom-radio">
+                        <input type="radio" name="q1" value="true">
+                        <span class="custom-radio-button"></span> True
+                    </label>
+                    <br><br>
+                    <label class="custom-radio">
+                        <input type="radio" name="q1" value="false">
+                        <span class="custom-radio-button"></span> False
+                    </label>
+                </div>
+            </div>
+
+            <!-- Separator Line -->
+            <br><br>
+            <hr>
+            <br><br>
+
+            <!-- Question 2 -->
+            <div class="question">
+                <div class="question-header">
+                    <p class="question-number">Question 2:</p>
+                    <div class="points">5 points</div>
+                </div>
+                <br>
+                <p class="question-content">It aims to provide a short-term memory for RNN that can last thousands of
+                    timesteps, thus "long short-term memory."</p>
+                <br>
+                <div class="options">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" name="q2" value="a">
+                        <span class="custom-checkbox-button"></span> Option A
+                    </label>
+                    <br><br>
+                    <label class="custom-checkbox">
+                        <input type="checkbox" name="q2" value="b">
+                        <span class="custom-checkbox-button"></span> Option B
+                    </label>
+                    <br><br>
+                    <label class="custom-checkbox">
+                        <input type="checkbox" name="q2" value="c">
+                        <span class="custom-checkbox-button"></span> Option C
+                    </label>
+                    <br><br>
+                    <label class="custom-checkbox">
+                        <input type="checkbox" name="q2" value="d">
+                        <span class="custom-checkbox-button"></span> Option D
+                    </label>
+                </div>
+            </div>
+
+
+            <div id="error-message" style="color: red; display: none; margin-top: 10px;"></div>
+
+
+            <div class="submit-section">
+                <button class="submit-btn" type="submit">Submit Quiz</button>
+            </div>
+
+        </form>
+    </section>
+
+
+    <div id="submit-message" style="display: none; color: green; text-align: center; margin-top: 20px;"></div>
+
+</body>
+
+</html> 
