@@ -1,0 +1,105 @@
+<html>
+
+<head>
+    <title>
+        Course List
+    </title>
+    <script src="../../componentes/header-footer.js"></script> 
+    <link rel="stylesheet" href="../../componentes/footer-header.css">
+    <link rel="stylesheet" href="/assests/css/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" />
+    <link rel="stylesheet" href="../assets/css/course-list.css">
+	<link rel="stylesheet" href="../componentes/footer-header.css">
+</head>
+
+<body>
+    <%- include('../componentes/header.ejs') %>
+    <form class="search-bar">
+        <section>
+            <input name="search" placeholder="Search for your favourite language" type="text" />
+            <button>
+                Search
+            </button>
+        </section>
+        <div class="filters">
+            <select name="Language">
+                <option value=-1>
+                    Language
+                </option>
+                <option>
+                    Arabic
+                </option>
+                <option>
+                    Korean
+                </option>
+                <option>
+                    Spanish
+                </option>
+                <option>
+                    English
+                </option>
+            </select>
+            <select name="Level">
+                <option value=-1>
+                    Level
+                </option>
+                <option>
+                    Beginner
+                </option>
+                <option>
+                    Intermediate
+                </option>
+                <option>
+                    Advanced
+                </option>
+            </select>
+            <select name="Duration">
+                <option value=-1>
+                    Duration
+                </option>
+                <option>
+                    3 Months
+                </option>
+                <option>
+                    6 Months
+                </option>
+                <option>
+                    12 Months
+                </option>
+            </select>
+            <select name="Region">
+                <option value=-1>
+                    Region
+                </option>
+                <option>
+                    Asia
+                </option>
+                <option>
+                    Europe
+                </option>
+            </select>
+        </div>
+    </form>
+    <div class="course-list">
+        <% Courses.forEach(course => { %>
+            <a class="course-card" href="/pages/course-page/course-page.html?id=<%= course.id %>" style="text-decoration: none;">
+                <img alt="Course Image" height="200" src="<%= course.imageUrl %>" width="200" />
+                <div class="course-info">
+                    <span><%= course.category %></span>
+                    <span><%= course.duration %></span>
+                </div>
+                <h3><%= course.title %></h3>
+                <p><%= course.description %></p>
+                <div class="course-footer">
+                    <img alt="Instructor Image" height="30" src="<%= course.instructorImage %>" width="30" />
+                    <p class="name"><%= course.instructorName %></p>
+                    <p class="price">$<%= course.price %></p>
+                </div>
+            </a>
+        <% }); %>
+    </div>
+    <%- include('../componentes/footer.ejs') %>
+</body>
+
+</html>
