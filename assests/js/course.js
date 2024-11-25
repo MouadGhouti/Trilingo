@@ -1,21 +1,53 @@
-// const { Sequelize, DataTypes } = require('sequelize');
-// const sequelize = new Sequelize('sqlite::memory:'); // Replace with your database config
+/* Returns Course Table, and if the table is empty adds default 10 courses */
+const { DataTypes } = require('sequelize');
+const db = require('./sequelize');
 
-const { console } = require("inspector");
 
-// const Coursedb = sequelize.define('Course', {
-//     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-//     title: { type: DataTypes.STRING, allowNull: false },
-//     description: { type: DataTypes.TEXT, allowNull: false },
-//     category: { type: DataTypes.STRING, allowNull: false },
-//     duration: { type: DataTypes.STRING, allowNull: false },
-//     price: { type: DataTypes.FLOAT, allowNull: false },
-//     imageUrl: { type: DataTypes.STRING, allowNull: true },
-//     instructorName: { type: DataTypes.STRING, allowNull: false },
-//     instructorImage: { type: DataTypes.STRING, allowNull: true },
-// });
+const CourseTable = db.sequelize.define('Course', {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
+    title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    description: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+    },
+    category: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    duration: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    price: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+    },
+    imageUrl: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    instructorName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    instructorImage: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    level: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+});
 
-const Courses = [
+const Courses_list = [
     // Asia Courses
     {
         id: 1,
@@ -30,16 +62,52 @@ const Courses = [
         level: "Beginner",
     },
     {
-        id: 2,
-        title: "Advanced Japanese Grammar",
-        description: "Master complex Japanese grammar and expand your language proficiency.",
+        id: 11,
+        title: "Intermediate Korean Conversations",
+        description: "Improve your Korean conversational skills with real-world scenarios.",
         category: "Asia",
-        duration: "9 Months",
+        duration: "5 Months",
+        price: 100,
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg",
+        instructorName: "Lee",
+        instructorImage: "https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/8/8d/T1_Faker_2024_Split_2.png",
+        level: "Intermediate",
+    },
+    {
+        id: 12,
+        title: "Advanced Korean Writing",
+        description: "Master Korean writing and elevate your skills for academic and professional use.",
+        category: "Asia",
+        duration: "7 Months",
         price: 150,
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg",
+        instructorName: "Lee",
+        instructorImage: "https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/8/8d/T1_Faker_2024_Split_2.png",
+        level: "Advanced",
+    },
+    {
+        id: 2,
+        title: "Basics of Japanese Language",
+        description: "Learn the fundamentals of Japanese grammar and phrases.",
+        category: "Asia",
+        duration: "2 Months",
+        price: 70,
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg",
         instructorName: "Aiko",
         instructorImage: "https://cdn.pixabay.com/photo/2022/07/29/12/22/asian-man-7351683_1280.jpg",
-        level: "Advanced",
+        level: "Beginner",
+    },
+    {
+        id: 13,
+        title: "Intermediate Japanese Grammar and Vocabulary",
+        description: "Expand your knowledge of Japanese grammar for intermediate-level proficiency.",
+        category: "Asia",
+        duration: "4 Months",
+        price: 120,
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg",
+        instructorName: "Aiko",
+        instructorImage: "https://cdn.pixabay.com/photo/2022/07/29/12/22/asian-man-7351683_1280.jpg",
+        level: "Intermediate",
     },
     {
         id: 3,
@@ -54,91 +122,42 @@ const Courses = [
         level: "Beginner",
     },
     {
-        id: 4,
-        title: "Intermediate Hindi for Everyday Use",
-        description: "Enhance your Hindi conversational skills for daily life situations.",
+        id: 14,
+        title: "Intermediate Mandarin for Business",
+        description: "Learn essential Mandarin for professional business communication.",
         category: "Asia",
-        duration: "5 Months",
-        price: 120,
-        imageUrl: "https://cdn.pixabay.com/photo/2018/01/21/14/36/indian-flag-3096740_1280.png",
-        instructorName: "Rajesh",
-        instructorImage: "https://cdn.pixabay.com/photo/2015/01/27/09/58/man-613601_1280.jpg",
-        level: "Intermediate",
-    },
-    {
-        id: 5,
-        title: "Advanced Arabic Literature",
-        description: "Explore classical and modern Arabic literature for advanced learners.",
-        category: "Asia",
-        duration: "11 Months",
-        price: 200,
-        imageUrl: "https://media.istockphoto.com/id/1334735882/vector/kingdom-of-saudi-arabia-flag.jpg?b=1&s=612x612&w=0&k=20&c=m5y8kvsrbnTXda3QWIORTlqQXP0QsIHvY2_rnVorVoU=",
-        instructorName: "Ali",
-        instructorImage: "https://cdn.pixabay.com/photo/2018/05/11/16/18/man-3390927_1280.jpg",
-        level: "Advanced",
-    },
-
-    // Europe Courses
-    {
-        id: 6,
-        title: "Beginner French for Travelers",
-        description: "Learn the basics of French to make your travels in France smoother and more enjoyable.",
-        category: "Europe",
-        duration: "2 Months",
-        price: 60,
-        imageUrl: "https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg",
-        instructorName: "Jean-Pierre",
-        instructorImage: "https://cdn.pixabay.com/photo/2016/11/29/03/52/man-1867175_1280.jpg",
-        level: "Beginner",
-    },
-    {
-        id: 7,
-        title: "Intermediate German for Professionals",
-        description: "Develop your German skills to effectively communicate in professional settings.",
-        category: "Europe",
-        duration: "4 Months",
-        price: 130,
-        imageUrl: "https://cdn.pixabay.com/photo/2012/04/12/23/52/germany-31017_1280.png",
-        instructorName: "Hans",
-        instructorImage: "https://cdn.pixabay.com/photo/2018/03/18/18/43/guy-3237859_1280.png",
-        level: "Intermediate",
-    },
-    {
-        id: 8,
-        title: "Advanced Spanish Literature and Culture",
-        description: "Delve deep into the rich culture and literature of Spain with this advanced course.",
-        category: "Europe",
-        duration: "10 Months",
-        price: 180,
-        imageUrl: "https://cdn.pixabay.com/photo/2012/04/11/15/33/spain-28530_1280.png",
-        instructorName: "Martin",
-        instructorImage: "https://cdn.pixabay.com/photo/2016/11/21/12/54/man-1845259_1280.jpg",
-        level: "Advanced",
-    },
-    {
-        id: 9,
-        title: "Basics of Italian Cooking Language",
-        description: "Learn essential Italian phrases for understanding cooking instructions and recipes.",
-        category: "Europe",
-        duration: "1 Month",
-        price: 50,
-        imageUrl: "https://cdn.pixabay.com/photo/2012/04/11/15/35/flag-28543_1280.png",
-        instructorName: "Luca",
-        instructorImage: "https://cdn.pixabay.com/photo/2016/09/24/03/20/man-1690965_1280.jpg",
-        level: "Beginner",
-    },
-    {
-        id: 10,
-        title: "Intermediate Russian Conversations",
-        description: "Practice and enhance your conversational Russian for everyday scenarios.",
-        category: "Europe",
         duration: "6 Months",
         price: 140,
-        imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/12/russia-26896_1280.png",
-        instructorName: "Markov",
-        instructorImage: "https://cdn.pixabay.com/photo/2016/11/29/09/38/adult-1868750_1280.jpg",
+        imageUrl: "https://cdn.pixabay.com/photo/2017/05/12/09/07/china-2306580_1280.png",
+        instructorName: "Li Wei",
+        instructorImage: "https://cdn.pixabay.com/photo/2016/09/07/16/38/portrait-1652023_1280.jpg",
         level: "Intermediate",
+    },
+    {
+        id: 15,
+        title: "Advanced Mandarin Reading and Writing",
+        description: "Refine your Mandarin reading and writing skills for academic purposes.",
+        category: "Asia",
+        duration: "8 Months",
+        price: 180,
+        imageUrl: "https://cdn.pixabay.com/photo/2017/05/12/09/07/china-2306580_1280.png",
+        instructorName: "Li Wei",
+        instructorImage: "https://cdn.pixabay.com/photo/2016/09/07/16/38/portrait-1652023_1280.jpg",
+        level: "Advanced",
     },
 ];
 
-module.exports = Courses;
+
+CourseTable.count()
+    .then(async function (count) {
+        if (!count) {
+            db.sequelize.sync({ alter: true })
+                .then(async () => {
+                    await CourseTable.bulkCreate(Courses_list, {ignoreDuplicates: true});
+                })
+        }
+        else{
+            console.log('table is populated');
+        }
+    });
+module.exports = CourseTable;

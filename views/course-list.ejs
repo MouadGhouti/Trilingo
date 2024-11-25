@@ -15,10 +15,10 @@
 
 <body>
     <%- include('../componentes/header.ejs') %>
-    <form class="search-bar">
+    <form class="search-bar" method="POST" action="/course-list">
         <section>
             <input name="search" placeholder="Search for your favourite language" type="text" />
-            <button>
+            <button type="submit" >
                 Search
             </button>
         </section>
@@ -82,7 +82,7 @@
         </div>
     </form>
     <div class="course-list">
-        <% Courses.forEach(course => { %>
+        <% courses.forEach(course => { %>
             <a class="course-card" href="/pages/course-page/course-page.html?id=<%= course.id %>" style="text-decoration: none;">
                 <img alt="Course Image" height="200" src="<%= course.imageUrl %>" width="200" />
                 <div class="course-info">
