@@ -5,7 +5,9 @@ body {
     background-color: #f8f9fa;
 }
 
-
+.error-message{
+    color: red;
+}
 .container {
     display: flex;
     justify-content: space-between;

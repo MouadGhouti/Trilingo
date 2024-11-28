@@ -122,12 +122,12 @@
 			<p>
 				Create an account to unlock exclusive features.
 			</p>
-			<form>
-				<input placeholder="Enter your Name" required="" type="text" />
-				<input placeholder="Enter your Email" required="" type="email" />
-				<input placeholder="Enter your Password" required="" type="password" />
+			<form method="POST" action="/new-user">
+				<input placeholder="Enter your Name" required type="text" name="name" />
+				<input placeholder="Enter your Email" required type="email" name="email" />
+				<input placeholder="Enter your Password" required type="password" name="password" />
 				<label class="checkbox">
-					<input required="" type="checkbox" />
+					<input required type="checkbox" />
 					I agree with
 					<a href="#">Terms of Use</a>and<a href="#">Privacy Policy</a>
 				</label>

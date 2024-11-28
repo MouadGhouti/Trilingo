@@ -4,7 +4,9 @@ body {
     padding: 0;
     background-color: #f8f9fa;
 }
-
+#error-message p{
+    color: red;
+}
 .container {
     display: flex;
     justify-content: center;

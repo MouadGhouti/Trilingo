@@ -1,8 +1,9 @@
 <!-- <link rel="stylesheet" href="footer-header.css"> -->
 
 <div class="announcement">
-    Free Courses 🌟 Sale Ends Soon, Get It Now →
+    Free Courses 🌟 Sale Ends Soon, Get It Now → 
 </div>
+
 <div class="navbar">
     <svg width="60" height="60" viewBox="0 0 71 74" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M66.8619 2.24243L40.2065 24.0388L45.1765 11.1897L66.8619 2.24243Z" fill="#BB071C" stroke="#BB071C"
@@ -49,11 +50,11 @@
         <a href="#">Pricing</a>
         <a href="#">Contact</a>
     </nav>
-    <div class="acc-buttons ">
+    <div class="acc-buttons <%=typeof session.isAuth !== 'undefined' && session.isAuth ? 'deactive' : ''%>">
         <a href="/sign-up">Sign Up</a>
         <a href="/log-in">Login</a>
     </div>
-    <div class="user-greeting deactive">
-        Welcome back, <span id="username"> USER </span>!
+    <div class="user-greeting <%=typeof session.isAuth !== 'undefined' && session.isAuth ? '' : 'deactive'%>">
+        Welcome back, <span id="username"> <% session.username %> </span>!
     </div>
 </div>

@@ -43,7 +43,7 @@
         border-radius: 5px;
         margin-left: 10px;
     }
-    & .acc-buttons a.deactive {
+    & .acc-buttons.deactive {
         display:none;
     }
     & .user-greeting {

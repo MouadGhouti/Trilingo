@@ -16,10 +16,15 @@
 			<h2>
 				Login
 			</h2>
+			<% if (error) { %>
+				<div id="error-message">
+					<p><%= error %></p>
+				</div>
+			<% } %>
 			<p>
 				Login to your account to unlock exclusive features.
 			</p>
-			<form>
+			<form method="POST" action="/log-in">
 				<input placeholder="Enter your Email" required="must enter a valid email" type="email" name="email" />
 				<input placeholder="Enter your Password" required="Must enter a password" type="password" name="password" />
 				<input type="submit" value="Login"/>
