@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= quiz.title %></title>
+    <link rel="stylesheet" href="/assets/css/quiz-page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<body>
+    <%- include('../header') %>
+
+    <header>
+        <div class="header-content">
+            <a href="#" class="back-arrow">←</a>
+            <div class="quiz-header">
+                <span class="quiz-number"><%= quiz.number %></span>
+                <br />
+                <span class="quiz-title"><%= quiz.title %></span>
+            </div>
+            <div class="timer">
+                <i class="far fa-clock"></i>
+                <span class="time-text"><%= quiz.duration %></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="introduction">
+        <p>
+            <%= quiz.introduction %>
+        </p>
+    </section>
+
+    <section class="questions">
+        <form id="quiz-form" onsubmit="return validateAndSubmit()">
+            <% quiz.questions.forEach((question, index) => { %>
+                <div class="question">
+                    <div class="question-header">
+                        <p class="question-number">Question <%= index + 1 %>:</p>
+                        <div class="points"><%= question.points %> points</div>
+                    </div>
+                    <br>
+                    <p class="question-content"><%= question.content %></p>
+                    <br>
+                    <div class="options">
+                        <% if (question.type === 'radio') { %>
+                            <% question.options.forEach(option => { %>
+                                <label class="custom-radio">
+                                    <input type="radio" name="q<%= index + 1 %>" value="<%= option.value %>">
+                                    <span class="custom-radio-button"></span> <%= option.label %>
+                                </label>
+                                <br><br>
+                            <% }) %>
+                        <% } else if (question.type === 'checkbox') { %>
+                            <% question.options.forEach(option => { %>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="q<%= index + 1 %>" value="<%= option.value %>">
+                                    <span class="custom-checkbox-button"></span> <%= option.label %>
+                                </label>
+                                <br><br>
+                            <% }) %>
+                        <% } %>
+                    </div>
+                </div>
+
+                <!-- Separator Line -->
+                <% if (index < quiz.questions.length - 1) { %>
+                    <br><br>
+                    <hr>
+                    <br><br>
+                <% } %>
+            <% }) %>
+
+            <div id="error-message" style="color: red; display: none; margin-top: 10px;"></div>
+
+            <div class="submit-section">
+                <button class="submit-btn" type="submit">Submit Quiz</button>
+            </div>
+        </form>
+    </section>
+
+    <div id="submit-message" style="display: none; color: green; text-align: center; margin-top: 20px;"></div>
+
+    <%- include('../footer') %>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let lastCheckedRadio = null;
+
+            const radios = document.querySelectorAll('input[type="radio"]');
+            radios.forEach(radio => {
+                radio.addEventListener('click', function () {
+                    if (this === lastCheckedRadio) {
+                        this.checked = false;
+                        lastCheckedRadio = null;
+                    } else {
+                        lastCheckedRadio = this;
+                    }
+                });
+            });
+        });
+
+        function validateAndSubmit() {
+            const formQ1 = document.querySelector('input[name="q1"]:checked');
+            const formQ2 = document.querySelectorAll('input[name="q2"]:checked');
+
+            const errorMessage = document.getElementById("error-message");
+            const successMessage = document.getElementById("submit-message");
+
+            if (!formQ1 || formQ2.length === 0) {
+                successMessage.style.display = "none";
+                errorMessage.style.display = "block";
+                errorMessage.innerText = "Please answer all questions before submitting.";
+                return false;
+            }
+
+            errorMessage.style.display = "none";
+            successMessage.style.display = "block";
+            successMessage.innerText = "Your answers have been submitted!";
+            return false;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,330 @@
+:root {
+    --primary-red: #A50003;
+    --secondary-red: #BB071C;
+    --thrid-red: #FADDDD;
+    --dark-red: #6D1313;
+    --primary-bg-color: #f8f8f8;
+    --white-color: #fff;
+    --black-color: #000;
+    --grey-color: #e0e0e0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    width: 100%;
+}
+
+.announcement {
+    background-color: #b71c1c;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: 500;
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+
+    & img {
+        height: 50px;
+    }
+
+    & nav {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+    
+        & a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+        }
+    }
+
+    & .acc-buttons a {
+        display: inline-block;
+        text-decoration: none;
+        color: #fff;
+        background-color: #b71c1c;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-left: 10px;
+    }
+    & .acc-buttons a.deactive {
+        display:none;
+    }
+    & .user-greeting {
+        display:inline;
+    }
+    & .user-greeting.deactive {
+        display:none;
+    }
+
+}
+
+.search-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-image: url("https://education.ec.europa.eu/sites/default/files/2021-12/language-learning-1200x675.jpg");
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    background-color: rgba(248, 46, 46, 0.596);
+
+    & section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        width: 100%;
+
+        & input {
+            width: 50%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        & button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+
+
+    & .filters {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        padding: 20px;
+
+        & select {
+            appearance: none;
+            width: 100%;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 width%3D%2220%22 height%3D%2216%22 viewBox%3D%220 0 20 16%22%3E%3Cpath fill%3D%22%23333%22 d%3D%22M10 12L0 2h20z%22/%3E%3C/svg%3E');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 12px;
+            cursor: pointer;
+            
+        }
+    }
+}
+
+
+
+.course-list {
+    display: grid;  
+    grid-template-columns: repeat(auto-fit, 270px);
+    justify-content: center;
+    padding: 30px 80px;
+    gap: 20px;
+
+}
+
+
+.course-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 230px;
+    padding: 10px;
+    text-align: left;
+    
+    & img {
+        width: 100%;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+
+    & .course-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+
+        & span {
+            font-size: 14px;
+            color: #999;
+        }
+    }
+
+    & h3 {
+        font-size: 18px;
+        margin: 10px 0;
+        color: #333;
+    }
+
+    & p {
+        font-size: 14px;
+        color: #666;
+    }
+
+    & .course-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+
+        & img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        & .name {
+            font-size: 15px;
+            color: #666;
+            margin-right: auto;
+        }
+        & .price {
+            color: #ff4b5c;
+            font-weight: 700;
+            padding-right:auto;
+        }
+    }
+}
+
+.recommended-section {
+    padding: 20px;
+
+    & h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    & .see-all {
+        float: right;
+        color: #ff4b5c;
+        cursor: pointer;
+    }
+}
+
+.footer {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    position: relative;
+
+    .contact-info {
+        text-align: left;
+        flex: 1;
+        min-width: 250px;
+
+        img {
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        div {
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+
+            i {
+                color: #FA0D00;
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .links {
+        display: flex;
+        justify-content: flex-end;
+        text-align: left;
+        flex: 2;
+        min-width: 300px;
+
+        div {
+            margin: 0 20px;
+        }
+
+        a {
+            color: #666;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline; 
+            }
+        }
+
+        h4 {
+            margin-bottom: 10px;
+        }
+    }
+
+    .social-icons {
+        display: flex;
+        justify-content: flex-start;
+
+        a {
+            color: #666;
+            margin: 0 10px;
+            font-size: 20px;
+
+            &:hover {
+                color: #FA0D00; 
+            }
+        }
+    }
+
+    p {
+        color: #666;
+        margin: 0;
+        width: 100%;
+        text-align: center;
+        padding-top: 20px;
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+    }
+}
+@media screen and (max-width: 1250px) {
+    .course-list{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+   
+}
+@media screen and (max-width: 740px) {
+    .course-list{
+        grid-template-columns: 1fr 1fr;
+    }
+   
+}
+@media screen and (max-width: 600px) {
+    .course-list{
+        grid-template-columns: 1fr;
+    }
+}

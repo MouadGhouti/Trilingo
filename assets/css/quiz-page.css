@@ -1,0 +1,230 @@
+:root {
+    --primary-bg-color: #D20004;
+    --secondary-bg-color: #BB071C;
+    --button-bg-color: #A50003;
+    --page-bg-color: #f5f5f5;
+    --large-font-size: 30px;
+    --medium-font-size: 18px;
+    --small-font-size: 16px;
+    --text-color-white: #ffffff;
+    --back-arrow-bg-color: #FADDDD;
+    --button-hover-bg-color: #BB071C;
+    --button-active-bg-color: #8B0000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--page-bg-color);
+}
+
+header {
+    background-color: var(--primary-bg-color);
+    color: var(--text-color-white);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.back-arrow {
+    font-size: 24px;
+    color: black;
+    text-decoration: none;
+    background-color: var(--back-arrow-bg-color);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-right: 20px;
+    margin-top: -5px;
+}
+
+.quiz-header {
+    text-align: left;
+    flex-grow: 1;
+    margin-left: 70px;
+}
+
+.quiz-number {
+    font-size: var(--large-font-size);
+    font-weight: bold;
+}
+
+.quiz-title {
+    font-size: var(--small-font-size);
+    font-weight: normal;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+}
+
+.timer i.far.fa-clock {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.time-text {
+    font-size: var(--medium-font-size);
+}
+
+.introduction {
+    background-color: var(--text-color-white);
+    color: black;
+    padding: 20px;
+    font-size: var(--medium-font-size);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.questions {
+    background-color: var(--text-color-white);
+    padding: 20px;
+    font-size: var(--medium-font-size);
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); 
+    grid-gap: 20px;
+}
+
+.question {
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr auto; 
+    grid-gap: 10px;
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.question-number {
+    font-weight: bold;
+    font-size: var(--medium-font-size);
+}
+
+.question-content {
+    font-size: var(--small-font-size);
+    margin-bottom: 10px;
+}
+
+.options {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.points {
+    color: var(--text-color-white);
+    background-color: var(--secondary-bg-color);
+    padding: 8px 40px;
+    font-size: 17px;
+    width: fit-content;
+    align-self: start;
+}
+
+.submit-section {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.submit-btn {
+    background-color: var(--button-bg-color);
+    color: var(--text-color-white);
+    font-size: var(--medium-font-size);
+    padding: 10px 40px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.submit-btn:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+.submit-btn:active {
+    background-color: var(--button-active-bg-color);
+}
+
+.custom-radio input[type="radio"],
+.custom-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.custom-radio-button {
+    height: 40px;
+    width: 40px;
+    background-image: url('images/radiobutton.png');
+    background-size: cover;
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.custom-radio input[type="radio"]:checked + .custom-radio-button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 58%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: #242729b6;
+    border-radius: 50%;
+}
+
+.custom-checkbox-button {
+    height: 30px;
+    width: 40px;
+    background-image: url('images/squarechoice.png');
+    background-size: cover;
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .custom-checkbox-button {
+    background-color: #24272921;
+    background-image: none;
+    border: none;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .custom-checkbox-button::after {
+    content: "✔";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 18px;
+}

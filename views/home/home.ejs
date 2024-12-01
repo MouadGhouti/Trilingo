@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Trilingo</title>
+    <!-- Link the CSS -->
+    <link rel="stylesheet" href="/assets/css/reset.css">
+    <link rel="stylesheet" href="/assets/css/home.css">
+    <script src="/js/main.js"></script>
+
+</head>
+<body>
+    <!-- Include the Header -->
+   <%- include('../header') %>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Unlock New Experiences with Language</h1>
+            <p>Expand your horizon with a new language. Learn from world leaders in language learning.</p>
+            <div class="cta-buttons">
+                <a href="/course-page" class="explore-btn">Explore Courses</a>
+                <a href="#prices" class="pricing-btn">View Pricing</a>
+            </div>
+        </section>
+
+        <!-- Promo Video -->
+        <section class="promo-video">
+            <video width="100%" controls>
+                <source src="/home/video/learn.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits">
+            <h2>Benefits</h2>
+            <div class="benefit-cards">
+                <div class="benefit-card">
+                    <h3>01</h3>
+                    <p>Flexible Learning Schedule</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>02</h3>
+                    <p>Expert Instruction</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>03</h3>
+                    <p>Diverse Course Offerings</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>04</h3>
+                    <p>Updated Curriculum</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>05</h3>
+                    <p>Exclusive Sessions with Fluent Speakers</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>06</h3>
+                    <p>Interactive Learning Environment</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Courses Section -->
+        <section class="our-courses">
+            <h2>Our Courses</h2>
+            <div class="course-cards">
+                <div class="course-card">
+                    <img src="/home/images/SPAIN.png" alt="Spanish I Course">
+                    <h3>Spanish I</h3>
+                    <p>8 Weeks | Beginner</p>
+                    <p>Instructor: John Smith</p>
+                    <a href="/course-page" class="get-it-now">Get It Now</a>
+                </div>
+                <div class="course-card">
+                    <img src="/home/images/SPAIN.png" alt="Spanish II Course">
+                    <h3>Spanish II</h3>
+                    <p>10 Weeks | Intermediate</p>
+                    <p>Instructor: Emily Johnson</p>
+                    <a href="/course-page" class="get-it-now">Get It Now</a>
+                </div>
+                <div class="course-card">
+                    <img src="/home/images/FRENCH.jpeg" alt="French I Course">
+                    <h3>French I</h3>
+                    <p>8 Weeks | Intermediate</p>
+                    <p>Instructor: David Brown</p>
+                    <a href="/course-page" class="get-it-now">Get It Now</a>
+                </div>
+                <div class="course-card">
+                    <img src="/home/images/FRENCH.jpeg" alt="French II Course">
+                    <h3>French II</h3>
+                    <p>10 Weeks | Beginner</p>
+                    <p>Instructor: Sarah Thompson</p>
+                    <a href="/course-page" class="get-it-now">Get It Now</a>
+                </div>
+                <div class="course-card">
+                    <img src="/home/images/China.png" alt="Chinese I Course">
+                    <h3>Chinese I</h3>
+                    <p>8 Weeks | Intermediate</p>
+                    <p>Instructor: Michael Adams</p>
+                    <a href="/course-page" class="get-it-now">Get It Now</a>
+                </div>
+                <div class="course-card">
+                    <img src="/home/images/China.png" alt="Chinese II Course">
+                    <h3>Chinese II</h3>
+                    <p>10 Weeks | Advanced</p>
+                    <p>Instructor: Jennifer Wilson</p>
+                    <a href="" class="get-it-now">Get It Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="our-pricing" id="prices">
+            <h2>Our Pricing</h2>
+            <div class="pricing-plans">
+                <div class="plan">
+                    <h3>Free Plan</h3>
+                    <p>$0/month</p>
+                    <ul>
+                        <li>Access to selected free courses</li>
+                        <li>Limited course materials and resources</li>
+                        <li>Basic community support</li>
+                        <li>No certification upon completion</li>
+                        <li>Ad-supported platform</li>
+                    </ul>
+                    <a href="#" class="get-started-btn">Get Started</a>
+                </div>
+                <div class="plan">
+                    <h3>Pro Plan</h3>
+                    <p>$79/month</p>
+                    <ul>
+                        <li>Unlimited access to all courses</li>
+                        <li>Unlimited course materials and resources</li>
+                        <li>Priority support from instructors</li>
+                        <li>Course completion certificates</li>
+                        <li>Ad-free experience</li>
+                    </ul>
+                    <a href="#" class="get-started-btn">Get Started</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Include the Footer -->
+    <%- include('../footer') %>
+    <h1>Footer loaded successfully</h1>
+</body>
+</html>

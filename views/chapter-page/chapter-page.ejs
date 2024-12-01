@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= chapter.title %></title>
+    <link rel="stylesheet" href="/assets/css/chapter-page.css" />
+    <script>
+        function selectElement(event) {
+            const elements = document.querySelectorAll('.lesson, .quiz');
+            elements.forEach((element) => {
+                element.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <button class="back-button" aria-label="Back" onclick="window.location.href='/home'">&larr;</button>
+            <nav>
+                <h2 class="section-title">Change Simplification</h2>
+                <% chapter.lessons.forEach(lesson => { %>
+                    <div class="lesson <%= lesson.color %>" tabindex="0" onclick="selectElement(event)">
+                        <i class="fas fa-book"></i><%= lesson.name %>
+                        <span class="lesson-time"><%= lesson.time %></span>
+                    </div>
+                <% }) %>
+            </nav>
+            <nav>
+                <h2 class="section-title">Practice Quiz</h2>
+                <% chapter.quizzes.forEach(quiz => { %>
+                    <div class="quiz <%= quiz.color %>" tabindex="0" onclick="window.location.href='/quiz-page'">
+                        <i class="fas fa-book"></i><%= quiz.name %>
+                        <span class="quiz-time"><%= quiz.time %></span>
+                    </div>
+                <% }) %>
+            </nav>
+        </aside>
+        <main class="content">
+            <header class="header">
+                <h1><%= chapter.title %></h1>
+                <p><%= chapter.subtitle %></p>
+                <div class="duration">
+                    <i class="far fa-clock"></i><%= chapter.duration %>
+                </div>
+            </header>
+            <article class="article">
+                <section class="video-container" aria-label="Video">
+                    <img src="<%= chapter.image %>" alt="<%= chapter.altText %>" width="800" height="400" />
+                    <button class="play-button" aria-label="Play video">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </section>
+                <section class="lecture-notes">
+                    <h2>Lecture Notes</h2>
+                    <p>
+                        <%= chapter.notes %>
+                    </p>
+                </section>
+                <button class="mark-complete">Mark as complete</button>
+            </article>
+        </main>
+    </div>
+</body>
+
+
+</html>
