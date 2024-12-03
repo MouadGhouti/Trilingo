@@ -157,7 +157,7 @@ app.get('/course-page', (req, res) => {
 
 // Chapter Page
 app.get('/chapter-page', (req, res) => {
-    res.render('chapter-page/chapter-page', {
+    res.render('chapter-page', {
         chapter: {
             title: 'Learn about Adobe XD & Prototyping',
             subtitle: 'Introduction about XD',
@@ -218,24 +218,21 @@ app.get('/quiz-page', (req, res) => {
 
 // Post routes for form submissions
 app.post('/log-in', loginUser, (req, res) => {
-    res.redirect('/');
-});
-
-app.post('/sign-up', SignUp, (req, res) => {
-    console.log('We shouldnt be here');
+    console.log("bad longing")
     res.redirect('/');
 });
 
 // Search functionality on Course List page
-app.post('/course-list', isAuthenticated, searchCourses, (req, res) => {
-    res.render('course-list', { courses: req.courses, title: 'Course List' });
+app.post('/course-list', searchCourses, (req, res) => {
+    res.render('course-list', {title: 'Course List', courses: req.courses });
 });
 app.post('/api/sign-up/v1', SignUp, (req, res) => {
     console.log('User signed up successfully');
     res.redirect('/');
 });
 
-app.post('/log-in', loginUser, (req, res) => {
+app.post('/api/log-in/v1', loginUser, (req, res) => {
+    console.log('good loging')
     res.redirect('/');
 });
 

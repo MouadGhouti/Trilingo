@@ -83,7 +83,7 @@
     </form>
     <div class="course-list">
         <% courses.forEach(course => { %>
-            <a class="course-card" href="/pages/course-page/course-page.html?id=<%= course.id %>" style="text-decoration: none;">
+            <a class="course-card" href="/course-page/?id=<%= course.id %>" style="text-decoration: none;">
                 <img alt="Course Image" height="200" src="<%= course.imageUrl %>" width="200" />
                 <div class="course-info">
                     <span><%= course.category %></span>

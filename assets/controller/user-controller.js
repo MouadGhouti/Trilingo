@@ -38,7 +38,7 @@ const loginUser = async (request, response) => {
             request.session.error = 'Invalid password';
             response.redirect("/log-in");
         }
-        request.session.username = name;
+        request.session.username = user.userName;
         request.session.isAuth = true;
         response.redirect("/");
     } catch (error) {
