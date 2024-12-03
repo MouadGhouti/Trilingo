@@ -20,11 +20,8 @@
     "express": "^4.21.1",
     "express-session": "^1.18.1",
     "jsonwebtoken": "^9.0.2",
-<<<<<<< HEAD
-    "mysql2": "^3.11.4",
-=======
+    "memorystore": "^1.6.7",
     "mysql2": "^3.11.5",
->>>>>>> af8b3ae (Project is done)
     "nodemon": "^3.1.7",
     "sequelize": "^6.37.5"
   }

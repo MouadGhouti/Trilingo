@@ -44,17 +44,16 @@
     </svg>
 
     <nav>
-        <a href="#">Home</a>
+        <a href="/">Home</a>
         <a href="/course-list">Courses</a>
-        <a href="#">About Us</a>
-        <a href="#">Pricing</a>
-        <a href="#">Contact</a>
+        <a href="/">About Us</a>
+        <a href="/#prices">Pricing</a>
     </nav>
     <div class="acc-buttons <%=typeof session.isAuth !== 'undefined' && session.isAuth ? 'deactive' : ''%>">
         <a href="/sign-up">Sign Up</a>
         <a href="/log-in">Login</a>
     </div>
     <div class="user-greeting <%=typeof session.isAuth !== 'undefined' && session.isAuth ? '' : 'deactive'%>">
-        Welcome back, <span id="username"> <% session.username %> </span>!
+        Welcome back, <span id="username"> <%= session.username %> </span>!
     </div>
 </div>

@@ -7,12 +7,14 @@
     <!-- Link the CSS -->
     <link rel="stylesheet" href="/assets/css/reset.css">
     <link rel="stylesheet" href="/assets/css/home.css">
+    <link rel="stylesheet" href="../componentes/footer-header.css">
+
     <script src="/js/main.js"></script>
 
 </head>
 <body>
     <!-- Include the Header -->
-   <%- include('../header') %>
+	<%- include('../componentes/header.ejs') %>
     <main>
         <!-- Hero Section -->
         <section class="hero">
@@ -27,7 +29,7 @@
         <!-- Promo Video -->
         <section class="promo-video">
             <video width="100%" controls>
-                <source src="/home/video/learn.mp4" type="video/mp4">
+                <source src="/assets/media/videos/learn.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </section>
@@ -68,42 +70,42 @@
             <h2>Our Courses</h2>
             <div class="course-cards">
                 <div class="course-card">
-                    <img src="/home/images/SPAIN.png" alt="Spanish I Course">
+                    <img src="/assets/media/images/SPAIN.png" alt="Spanish I Course">
                     <h3>Spanish I</h3>
                     <p>8 Weeks | Beginner</p>
                     <p>Instructor: John Smith</p>
                     <a href="/course-page" class="get-it-now">Get It Now</a>
                 </div>
                 <div class="course-card">
-                    <img src="/home/images/SPAIN.png" alt="Spanish II Course">
+                    <img src="/assets/media/images/SPAIN.png" alt="Spanish II Course">
                     <h3>Spanish II</h3>
                     <p>10 Weeks | Intermediate</p>
                     <p>Instructor: Emily Johnson</p>
                     <a href="/course-page" class="get-it-now">Get It Now</a>
                 </div>
                 <div class="course-card">
-                    <img src="/home/images/FRENCH.jpeg" alt="French I Course">
+                    <img src="/assets/media/images/FRENCH.jpeg" alt="French I Course">
                     <h3>French I</h3>
                     <p>8 Weeks | Intermediate</p>
                     <p>Instructor: David Brown</p>
                     <a href="/course-page" class="get-it-now">Get It Now</a>
                 </div>
                 <div class="course-card">
-                    <img src="/home/images/FRENCH.jpeg" alt="French II Course">
+                    <img src="/assets/media/images/FRENCH.jpeg" alt="French II Course">
                     <h3>French II</h3>
                     <p>10 Weeks | Beginner</p>
                     <p>Instructor: Sarah Thompson</p>
                     <a href="/course-page" class="get-it-now">Get It Now</a>
                 </div>
                 <div class="course-card">
-                    <img src="/home/images/China.png" alt="Chinese I Course">
+                    <img src="/assets/media/images/China.png" alt="Chinese I Course">
                     <h3>Chinese I</h3>
                     <p>8 Weeks | Intermediate</p>
                     <p>Instructor: Michael Adams</p>
                     <a href="/course-page" class="get-it-now">Get It Now</a>
                 </div>
                 <div class="course-card">
-                    <img src="/home/images/China.png" alt="Chinese II Course">
+                    <img src="/assets/media/images/China.png" alt="Chinese II Course">
                     <h3>Chinese II</h3>
                     <p>10 Weeks | Advanced</p>
                     <p>Instructor: Jennifer Wilson</p>
@@ -145,7 +147,6 @@
     </main>
 
     <!-- Include the Footer -->
-    <%- include('../footer') %>
-    <h1>Footer loaded successfully</h1>
+    <%- include('../componentes/footer.ejs') %>
 </body>
 </html>

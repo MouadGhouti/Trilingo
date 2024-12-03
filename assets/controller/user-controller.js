@@ -1,4 +1,4 @@
-const UserTable = require('../../views/js/user.js');
+const UserTable = require('../models/user.js');
 const bcrypt = require('bcryptjs');
 
 //SignUp middleware
@@ -7,17 +7,17 @@ const SignUp = async (request, response, next) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     try {
         const user = await UserTable.create({
-            name,
-            email,
+            userName: name,
+            email: email,
             password: hashedPassword,
         });
-        request.session.username = user.name;
+        request.session.username = name;
         request.session.isAuth = true;
         next();
     }
     catch {
         request.session.error = 'Error signing up';
-        response.redirect('/signup');
+        response.redirect('/sign-up', {error: 'Error signing up'});
     }
 }
 
@@ -38,7 +38,7 @@ const loginUser = async (request, response) => {
             request.session.error = 'Invalid password';
             response.redirect("/log-in");
         }
-        request.session.username = user.name;
+        request.session.username = name;
         request.session.isAuth = true;
         response.redirect("/");
     } catch (error) {

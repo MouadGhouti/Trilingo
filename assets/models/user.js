@@ -1,11 +1,16 @@
 const { DataTypes } = require('sequelize');
-const db = require('./sequelize');
+const db = require('../js/sequelize');
 
-const UserTable = db.sequelize.define('User', {
+const UserTable = db.sequelize.define('Users', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
+    },
+    userName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 'user',
     },
     email: {
         type: DataTypes.STRING,
@@ -38,6 +43,9 @@ const UserTable = db.sequelize.define('User', {
             },
         },
     },
-});
-db.sequelize.sync({ alter: true });
+},
+    {
+        tableName: 'Users',
+    });
+db.sequelize.sync({ alert: true });
 module.exports = UserTable;

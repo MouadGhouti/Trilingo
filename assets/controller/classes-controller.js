@@ -1,4 +1,4 @@
-const  CourseTable = require('../../views/js/course.js');
+const  CourseTable = require('../models/course.js');
 const Sequelize = require('sequelize');
 
 

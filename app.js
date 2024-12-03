@@ -4,6 +4,8 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const path = require('path');
+const MemoryStore = require('memorystore')(session);
+
 
 // Create the Express app
 const app = express();
@@ -25,7 +27,7 @@ app.use(
 );
 
 // Database models
-const connectToDB = require('./views/js/sequelize').connectToDB;
+const connectToDB = require('./assets/js/sequelize').connectToDB;
 
 // Controllers
 const { searchCourses, getAllCourses } = require('./assets/controller/classes-controller');
@@ -33,10 +35,26 @@ const { SignUp, loginUser } = require('./assets/controller/user-controller');
 
 // Static file paths
 app.use('/assets', express.static(path.join(__dirname, 'assets'))); // CSS and JS files
-app.use('/components', express.static(path.join(__dirname, 'components'))); // Header and Footer
-app.use('/home', express.static(path.join(__dirname, 'views/home'))); // Images and Videos in the home folder
+app.use('/componentes', express.static(path.join(__dirname, 'componentes'))); // Header and Footer
+// app.use('/home', express.static(path.join(__dirname, 'views/home'))); // Images and Videos in the home folder
+
+
 
 // Session Middleware
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET || 'defaultsecret',
+        saveUninitialized: false,
+        resave: false,
+        store: new MemoryStore({
+            checkPeriod: 86400000, // Prune expired entries every 24 hours
+        }),
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24, // 1 day
+        },
+    })
+);
+
 app.use((req, res, next) => {
     res.locals.session = req.session;
     res.locals.error = req.session.error || null;
@@ -46,7 +64,7 @@ app.use((req, res, next) => {
 
 // Authentication Middleware
 const isAuthenticated = (req, res, next) => {
-    if (req.session.user) {
+    if (res.locals.session.isAuth) {
         next();
     } else {
         res.redirect('/log-in');
@@ -56,12 +74,12 @@ const isAuthenticated = (req, res, next) => {
 // Routes
 // Home Page
 app.get('/', (req, res) => {
-    res.render('home/home');
+    res.render('home');
 });
-app.get('/home', (req, res) => {
-    res.redirect('/');
+app.get("/test", (req, res) => {
+    console.log(req.session);
+    res.send("Check console for session data.");
 });
-
 // Log In Page
 app.get('/log-in', (req, res) => {
     res.render('log-in', { title: 'Log In Page' });
@@ -71,6 +89,11 @@ app.get('/log-in', (req, res) => {
 app.get('/sign-up', (req, res) => {
     res.render('sign-up', { title: 'Sign Up Page' });
 });
+// Course List Page
+app.get('/course-list', getAllCourses,(req, res) => {
+    res.render('course-list', { title: 'course-list Page', courses: req.courses });
+});
+
 // Individual Course Page
 app.get('/course-page', (req, res) => {
     // Example data; replace this with data fetched from your database
@@ -129,7 +152,7 @@ app.get('/course-page', (req, res) => {
         { question: 'What kind of support can I expect from instructors?', answer: 'Our instructors offer timely and comprehensive support through live sessions and forums.' },
     ];
 
-    res.render('course-page/course-page', { courses, testimonials, faqs });
+    res.render('course-page', { courses, testimonials, faqs });
 });
 
 // Chapter Page
@@ -195,23 +218,25 @@ app.get('/quiz-page', (req, res) => {
 
 // Post routes for form submissions
 app.post('/log-in', loginUser, (req, res) => {
-    res.redirect('/course-list');
+    res.redirect('/');
 });
 
 app.post('/sign-up', SignUp, (req, res) => {
+    console.log('We shouldnt be here');
     res.redirect('/');
 });
 
 // Search functionality on Course List page
 app.post('/course-list', isAuthenticated, searchCourses, (req, res) => {
-    res.render('course-list/course-list', { courses: req.courses, title: 'Course List' });
+    res.render('course-list', { courses: req.courses, title: 'Course List' });
 });
-app.post('/new-user', SignUp, (req, res) => {
+app.post('/api/sign-up/v1', SignUp, (req, res) => {
+    console.log('User signed up successfully');
     res.redirect('/');
 });
 
 app.post('/log-in', loginUser, (req, res) => {
-    res.redirect('/course-list');
+    res.redirect('/');
 });
 
 // Error handling
